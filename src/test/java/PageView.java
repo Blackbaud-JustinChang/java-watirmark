@@ -9,9 +9,10 @@ public class PageView extends Page {
     public Keyword teamdivisions = new Keyword("teamdivisions");
 
     public PageView(){
-        this.getKeywords();
+        createKeywords();
     }
 
 
-
 }
+
+
