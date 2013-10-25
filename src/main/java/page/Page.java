@@ -9,8 +9,6 @@ import java.util.HashMap;
 public abstract class Page {
 
     private static WebDriver browser;
-
-
     public HashMap<String, Keyword> keywords = new HashMap<String, Keyword>();
 
     public static WebDriver browser(){
@@ -30,7 +28,7 @@ public abstract class Page {
             try{
                 Object obj = f.get(this);
                 if(obj instanceof Keyword){
-                    String name = ((Keyword) obj).getName();
+                    String name = f.getName();
                     keywords.put(name, (Keyword)obj);
                 }
             } catch(Exception e){
