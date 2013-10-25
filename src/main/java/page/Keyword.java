@@ -9,18 +9,20 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Keyword {
 
-    public String name;
+    public By map;
 
-    public Keyword(String _name){
-        name = _name;
+    public Keyword(By _map){
+        map = _map;
     }
 
-    public String getName(){
-        return name;
+    public void set(){
+        WebElement element = Page.browser().findElement(map);
+        String type = element.getTagName();
+
     }
 
-    public String toString(){
-        return name;
+    public WebElement get(){
+        return Page.browser().findElement(map);
     }
 
 }
