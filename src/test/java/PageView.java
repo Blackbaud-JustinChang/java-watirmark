@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 
 public class PageView extends Page {
 
-    public Keyword search = new Keyword(By.name("q"));
-//    public Keyword teamdivisions = new Keyword();
+    public Keyword firstname = new Keyword(By.name("firstname"));
+    public Keyword select = new Keyword(By.id("company"));
 
     public PageView(){
         createKeywords();

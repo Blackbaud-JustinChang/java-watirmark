@@ -11,13 +11,21 @@ public class Keyword {
 
     public By map;
 
+    private enum ElementType{
+        input, select, table
+    }
+
     public Keyword(By _map){
         map = _map;
     }
 
-    public void set(){
+    public void set(String value){
         WebElement element = Page.browser().findElement(map);
-        String type = element.getTagName();
+        ElementType type = ElementType.valueOf(element.getTagName());
+        switch(type){
+            case input:
+                element.sendKeys(value);
+        }
 
     }
 
