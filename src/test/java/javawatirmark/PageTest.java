@@ -33,10 +33,10 @@ public class PageTest {
         browser.get(file.getAbsolutePath());
     }
 
-    @AfterClass
-    public static void tearDown(){
-        browser.quit();
-    }
+//    @AfterClass
+//    public static void tearDown(){
+//        browser.quit();
+//    }
 
     @Test
     public void testKeywords(){
@@ -46,6 +46,7 @@ public class PageTest {
         keysTestSet.add("firstname");
         keysTestSet.add("companySelect");
         keysTestSet.add("includeEmail");
+        keysTestSet.add("gender");
         assertEquals(keys, keysTestSet);
     }
 
@@ -58,6 +59,7 @@ public class PageTest {
         keysTestSet.add("companySelect");
         keysTestSet.add("includeEmail");
         keysTestSet.add("lastname");
+        keysTestSet.add("gender");
         assertEquals(keys, keysTestSet);
     }
 
@@ -72,5 +74,17 @@ public class PageTest {
         view.companySelect.set("Regional");
         Select dropDown = new Select(view.companySelect.get());
         assertEquals(dropDown.getFirstSelectedOption().getText(), "Regional");
+    }
+
+    @Test
+    public void testPagePopulateRadio(){
+        view.gender.set("Male");
+        assert(view.gender.get("Male").isSelected());
+        view.gender.set("Guy");
+        assert(view.gender.get("Guy").isSelected());
+        view.gender.set("Female");
+        assert(view.gender.get("Female").isSelected());
+        view.gender.set("Girl");
+        assert(view.gender.get("Girl").isSelected());
     }
 }

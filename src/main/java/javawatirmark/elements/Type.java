@@ -1,4 +1,4 @@
-package javawatirmark.page;
+package javawatirmark.elements;
 
 
 import org.openqa.selenium.WebElement;
