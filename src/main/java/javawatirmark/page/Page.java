@@ -1,6 +1,5 @@
-package main.java.page;
+package javawatirmark.page;
 
-import main.java.Session;
 import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.Field;
