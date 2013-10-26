@@ -1,3 +1,5 @@
+package javawatirmark;
+
 import javawatirmark.page.*;
 import org.openqa.selenium.By;
 
