@@ -22,6 +22,10 @@ public abstract class Page {
         return keywords;
     }
 
+    public Keyword getKeyword(String key){
+        return keywords.get(key);
+    }
+
     public void createKeywords(){
         for(Field f: this.getClass().getFields()){
             try{
