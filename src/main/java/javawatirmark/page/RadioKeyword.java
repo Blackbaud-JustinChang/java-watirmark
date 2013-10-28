@@ -16,7 +16,7 @@ public class RadioKeyword extends Keyword{
     }
 
     public void set(String value){
-        List<WebElement> radios = Page.browser().findElements(map);
+        List<WebElement> radios = Session.getInstance().browser.findElements(map);
         for(WebElement radio: radios){
             if(radio.getAttribute("value").equals(rmap.findMatch(value))){
                 radio.click();
@@ -26,7 +26,7 @@ public class RadioKeyword extends Keyword{
 
     public WebElement get(String value){
         WebElement element = null;
-        List<WebElement> radios = Page.browser().findElements(map);
+        List<WebElement> radios = Session.getInstance().browser.findElements(map);
         for(WebElement radio: radios){
             if(radio.getAttribute("value").equals(rmap.findMatch(value))){
                 element = radio;

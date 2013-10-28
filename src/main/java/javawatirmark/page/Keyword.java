@@ -19,14 +19,12 @@ public class Keyword {
         type = _type;
     }
 
-
-
     public void set(String value){
-        WebElement element = Page.browser().findElement(map);
+        WebElement element = Session.getInstance().browser.findElement(map);
         type.handleElement(element, value);
     }
 
     public WebElement get(){
-        return Page.browser().findElement(map);
+        return Session.getInstance().browser.findElement(map);
     }
 }

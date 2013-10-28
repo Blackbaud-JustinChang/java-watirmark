@@ -2,6 +2,7 @@ package javawatirmark;
 
 import javawatirmark.page.Keyword;
 import javawatirmark.page.Page;
+import javawatirmark.page.Session;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class PageTest {
     public void setUp(){
         view = new PageView();
         viewChild = new OtherView();
-        browser = Page.browser();
+        browser = Session.getInstance().openbrowser();
         File file = new File("src/test/resources/page_test.html");
         browser.get(file.getAbsolutePath());
     }

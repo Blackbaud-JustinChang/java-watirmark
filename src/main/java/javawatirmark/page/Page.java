@@ -5,16 +5,9 @@ import org.openqa.selenium.WebDriver;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-public abstract class Page {
+public abstract class Page extends PageDefinition{
 
-    private static WebDriver browser;
     public HashMap<String, Keyword> keywords = new HashMap<String, Keyword>();
-
-    public static WebDriver browser(){
-        if( browser == null)
-            browser = Session.getInstance().openbrowser();
-        return browser;
-    }
 
     public HashMap<String, Keyword> getKeywords(){
         if(keywords.isEmpty())

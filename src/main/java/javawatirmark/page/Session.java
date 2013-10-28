@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Session {
 
     private static Session instance = null;
-    private WebDriver browser;
+    public WebDriver browser;
 
     protected Session(){
         //Exists only to defeat instantiation;
@@ -19,7 +19,8 @@ public class Session {
     }
 
     public WebDriver openbrowser(){
-        browser = newWatirBrowser();
+        if(browser == null)
+            browser = newWatirBrowser();
         return browser;
     }
 
