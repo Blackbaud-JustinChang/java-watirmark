@@ -23,10 +23,18 @@ import static org.junit.Assert.assertFalse;
 public class ControllerTest {
 
     private PageController controller;
+    private PageView view;
 
     @Before
     public void setUp(){
-        controller = new PageController();
+        HashMap model = new HashMap();
+        model.put("firstname", "Bobby");
+        model.put("companySelect", "Regional");
+        model.put("includeEmail", "True");
+        model.put("gender", "Male");
+        controller = new PageController(model);
+        view = new PageView();
+
     }
 
     @AfterClass
@@ -36,6 +44,15 @@ public class ControllerTest {
 
     @Test
     public void testControllerView(){
-        assertEquals(controller.view.getClass(), new PageView().getClass());
+        assertEquals(controller.getView().getClass(), new PageView().getClass());
+    }
+
+    @Test
+    public void testControllerPopulation(){
+        controller.create();
+        assertEquals(view.firstname.get().getAttribute("value"), "Bobby");
+        assertEquals(new Select(view.companySelect.get()).getFirstSelectedOption().getText(), "Regional");
+        assert(view.includeEmail.get().isSelected());
+        assert(view.gender.get("Male").isSelected());
     }
 }

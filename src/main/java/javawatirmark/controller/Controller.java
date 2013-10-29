@@ -3,15 +3,34 @@ package javawatirmark.controller;
 import javawatirmark.page.*;
 import javawatirmark.model.*;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 public abstract class Controller {
 
-    private Page view;
+    protected Page view;
+    protected HashMap model;
 
-    public void setView(Page view){
-        this.view = view;
+    public void create(){
+        view.create(model);
+        populateData(model);
     }
 
-    public void populateData(){
+    public void populateData(HashMap model){
+        HashMap<String, Keyword> keywords = view.getKeywords();
+        Iterator<String> keys = keywords.keySet().iterator();
+
+        while(keys.hasNext()){
+            String key = keys.next();
+            if (model.get(key) != null){
+                Keyword keyword = keywords.get(key);
+                keyword.set((String) model.get(key));
+            }
+        }
+    }
+
+    public Page getView(){
+        return view;
     }
 
     public boolean populateValues(){
@@ -24,6 +43,5 @@ public abstract class Controller {
     public void run(){
 
     }
-
 
 }
