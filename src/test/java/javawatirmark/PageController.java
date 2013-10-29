@@ -13,9 +13,9 @@ import java.util.HashMap;
  * To change this template use File | Settings | File Templates.
  */
 public class PageController extends Controller {
+    public static PageView view = new PageView();
 
-    public PageController(Model model){
-        super(model);
-        view = new PageView();
+    public PageController(){
+        setView(view);
     }
 }

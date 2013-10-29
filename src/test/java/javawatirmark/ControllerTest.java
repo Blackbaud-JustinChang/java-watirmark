@@ -2,6 +2,7 @@ package javawatirmark;
 
 import javawatirmark.page.Keyword;
 import javawatirmark.page.Page;
+import javawatirmark.page.Session;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,5 +22,20 @@ import static org.junit.Assert.assertFalse;
 @RunWith(JUnit4.class)
 public class ControllerTest {
 
+    private PageController controller;
 
+    @Before
+    public void setUp(){
+        controller = new PageController();
+    }
+
+    @AfterClass
+    public static void tearDown(){
+
+    }
+
+    @Test
+    public void testControllerView(){
+        assertEquals(controller.view.getClass(), new PageView().getClass());
+    }
 }

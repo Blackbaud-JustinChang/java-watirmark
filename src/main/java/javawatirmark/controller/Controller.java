@@ -2,16 +2,13 @@ package javawatirmark.controller;
 
 import javawatirmark.page.*;
 import javawatirmark.model.*;
-public class Controller {
 
-    public Page view;
+public abstract class Controller {
 
-    public Controller(){
+    private Page view;
 
-    }
-
-    public Controller(Model model){
-
+    public void setView(Page view){
+        this.view = view;
     }
 
     public void populateData(){
@@ -24,8 +21,9 @@ public class Controller {
     public void verifyData(){
     }
 
-    public Page getView(){
-        return view;
+    public void run(){
+
     }
+
 
 }
