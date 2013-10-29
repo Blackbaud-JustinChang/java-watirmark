@@ -22,9 +22,17 @@ public class PageView extends Page {
         createKeywords();
     }
 
-    public void create(HashMap model){
+    public void home(HashMap model){
         File file = new File("src/test/resources/page_test.html");
         browser().get(file.getAbsolutePath());
+    }
+
+    public void create(HashMap model){
+        home(model);
+    }
+
+    public void verify(HashMap model){
+        home(model);
     }
 
 

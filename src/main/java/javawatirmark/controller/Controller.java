@@ -13,10 +13,15 @@ public abstract class Controller {
 
     public void create(){
         view.create(model);
-        populateData(model);
+        populateData();
     }
 
-    public void populateData(HashMap model){
+    public void verify(){
+        view.verify(model);
+        verifyData();
+    }
+
+    public void populateData(){
         HashMap<String, Keyword> keywords = view.getKeywords();
         Iterator<String> keys = keywords.keySet().iterator();
 
@@ -38,6 +43,16 @@ public abstract class Controller {
     }
 
     public void verifyData(){
+        HashMap<String, Keyword> keywords = view.getKeywords();
+        Iterator<String> keys = keywords.keySet().iterator();
+
+        while(keys.hasNext()){
+            String key = keys.next();
+            if (model.get(key) != null){
+                Keyword keyword = keywords.get(key);
+                keyword.verify((String) model.get(key));
+            }
+        }
     }
 
     public void run(){

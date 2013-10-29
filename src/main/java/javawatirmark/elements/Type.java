@@ -11,12 +11,21 @@ public enum Type{
             element.clear();
             element.sendKeys(value);
         }
+
+        public String getValue(WebElement element){
+            return element.getText();
+        }
     },
     SELECT_LIST{
         /* Selects based on the visible text of the select list */
         public void handleElement(WebElement element, String value){
             Select dropDown = new Select(element);
             dropDown.selectByVisibleText(value);
+        }
+
+        public String getValue(WebElement element){
+            Select dropDown = new Select(element);
+            return dropDown.getFirstSelectedOption().getText();
         }
     },
     CHECKBOX{
@@ -31,8 +40,13 @@ public enum Type{
                     element.click();
             }
         }
+
+        public String getValue(WebElement element){
+            return new Boolean(element.isSelected()).toString();
+        }
     };
 
     public abstract void handleElement(WebElement element, String value);
+    public abstract String getValue(WebElement element);
 }
 

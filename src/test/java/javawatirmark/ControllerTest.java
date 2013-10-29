@@ -37,22 +37,27 @@ public class ControllerTest {
 
     }
 
-    @AfterClass
-    public static void tearDown(){
-
-    }
+//    @AfterClass
+//    public static void tearDown(){
+//
+//    }
+//
+//    @Test
+//    public void testControllerView(){
+//        assertEquals(controller.getView().getClass(), new PageView().getClass());
+//    }
+//
+//    @Test
+//    public void testControllerPopulation(){
+//        controller.create();
+//        assertEquals(view.firstname.get().getAttribute("value"), "Bobby");
+//        assertEquals(new Select(view.companySelect.get()).getFirstSelectedOption().getText(), "Regional");
+//        assert(view.includeEmail.get().isSelected());
+//        assert(view.gender.get("Male").isSelected());
+//    }
 
     @Test
-    public void testControllerView(){
-        assertEquals(controller.getView().getClass(), new PageView().getClass());
-    }
-
-    @Test
-    public void testControllerPopulation(){
-        controller.create();
-        assertEquals(view.firstname.get().getAttribute("value"), "Bobby");
-        assertEquals(new Select(view.companySelect.get()).getFirstSelectedOption().getText(), "Regional");
-        assert(view.includeEmail.get().isSelected());
-        assert(view.gender.get("Male").isSelected());
+    public void testControllerVerification(){
+        controller.verify();
     }
 }

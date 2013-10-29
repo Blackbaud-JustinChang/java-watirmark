@@ -27,4 +27,8 @@ public class Keyword {
     public WebElement get(){
         return Session.getInstance().browser.findElement(map);
     }
+
+    public void verify(String value){
+        assert(type.getValue(get()).equals(value));
+    }
 }
