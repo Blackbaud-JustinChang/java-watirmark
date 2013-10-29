@@ -1,7 +1,6 @@
 package javawatirmark;
 
 import javawatirmark.page.Keyword;
-import javawatirmark.page.Page;
 import javawatirmark.page.Session;
 import org.junit.AfterClass;
 import org.junit.Before;

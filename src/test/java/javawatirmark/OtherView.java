@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class OtherView extends PageView {
 
-    public Keyword lastname = new Keyword(Type.TEXT_FIELD, By.name("lastname"));
+    public static Keyword lastname = new Keyword(Type.TEXT_FIELD, By.name("lastname"));
 
 
     public OtherView(){
