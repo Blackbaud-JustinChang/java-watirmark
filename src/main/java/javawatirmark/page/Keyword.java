@@ -28,6 +28,6 @@ public class Keyword {
     }
 
     public void verify(String value) {
-        assert (type.getValue(get()).equals(value));
+        assert (type.getValue(get()).toLowerCase().equals(value.toLowerCase()));
     }
 }

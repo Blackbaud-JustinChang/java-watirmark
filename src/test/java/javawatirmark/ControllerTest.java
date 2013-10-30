@@ -1,5 +1,6 @@
 package javawatirmark;
 
+import javawatirmark.page.Page;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class ControllerTest {
 
     private PageController controller;
-    private PageView view;
+    private static PageView view;
     private HashMap model;
 
     @Before
@@ -31,7 +32,7 @@ public class ControllerTest {
 
     @AfterClass
     public static void tearDown(){
-
+        view.browser().quit();
     }
 
     @Test

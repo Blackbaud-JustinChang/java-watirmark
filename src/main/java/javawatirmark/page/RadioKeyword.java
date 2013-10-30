@@ -36,8 +36,9 @@ public class RadioKeyword extends Keyword {
         return element;
     }
 
+    @Override
     public void verify (String value){
-        assert(true);
+        assert(get(value).isSelected());
     }
 
 }
