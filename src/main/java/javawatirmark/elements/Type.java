@@ -13,7 +13,7 @@ public enum Type {
         }
 
         public String getValue(WebElement element) {
-            return element.getText();
+            return element.getAttribute("value");
         }
     },
     SELECT_LIST {

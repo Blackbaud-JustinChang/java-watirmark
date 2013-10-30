@@ -31,7 +31,9 @@ public abstract class Page extends PageDefinition {
         }
     }
 
-    public abstract void create(HashMap model);
+    public abstract void home(HashMap model);
 
-    public abstract void verify(HashMap model);
+    public void create(HashMap model) {}
+
+    public void verify(HashMap model) {}
 }

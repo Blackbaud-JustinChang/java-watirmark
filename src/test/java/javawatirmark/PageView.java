@@ -25,8 +25,8 @@ public class PageView extends Page {
     }
 
     public void home(HashMap model) {
-        File file = new File("src/test/resources/page_test.html");
-        browser().get(file.getAbsolutePath());
+        File file = new File("src/test/resources/page_test_populated.html");
+        browser().get("file://"+file.getAbsolutePath());
     }
 
     public void create(HashMap model) {

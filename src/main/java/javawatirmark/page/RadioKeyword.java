@@ -36,4 +36,8 @@ public class RadioKeyword extends Keyword {
         return element;
     }
 
+    public void verify (String value){
+        assert(true);
+    }
+
 }

@@ -12,10 +12,11 @@ public class ControllerTest {
 
     private PageController controller;
     private PageView view;
+    private HashMap model;
 
     @Before
     public void setUp() {
-        HashMap model = new HashMap();
+        model = new HashMap();
         model.put("firstname", "Bobby");
         model.put("companySelect", "Regional");
         model.put("includeEmail", "True");
