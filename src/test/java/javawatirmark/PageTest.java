@@ -26,21 +26,21 @@ public class PageTest {
     private static WebDriver browser;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         view = new PageView();
         viewChild = new OtherView();
         browser = Session.getInstance().openbrowser();
         File file = new File("src/test/resources/page_test.html");
-        browser.get(file.getAbsolutePath());
+        browser.get("file://"+file.getAbsolutePath());
     }
 
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown() {
         browser.quit();
     }
 
     @Test
-    public void testKeywords(){
+    public void testKeywords() {
         HashMap<String, Keyword> keywords = view.getKeywords();
         Set<String> keys = keywords.keySet();
         Set<String> keysTestSet = new HashSet<String>();
@@ -52,7 +52,7 @@ public class PageTest {
     }
 
     @Test
-    public void testKeywordInheritance(){
+    public void testKeywordInheritance() {
         HashMap<String, Keyword> keywords = viewChild.getKeywords();
         Set<String> keys = keywords.keySet();
         Set<String> keysTestSet = new HashSet<String>();
@@ -65,35 +65,35 @@ public class PageTest {
     }
 
     @Test
-    public void testPagePopulateTextField(){
+    public void testPagePopulateTextField() {
         view.firstname.set("John");
         assertEquals(view.firstname.get().getAttribute("value"), "John");
     }
 
     @Test
-    public void testPagePopulateSelectList(){
+    public void testPagePopulateSelectList() {
         view.companySelect.set("Regional");
         Select dropDown = new Select(view.companySelect.get());
         assertEquals(dropDown.getFirstSelectedOption().getText(), "Regional");
     }
 
     @Test
-    public void testPagePopulateCheckbox(){
+    public void testPagePopulateCheckbox() {
         view.includeEmail.set("True");
-        assert(view.includeEmail.get().isSelected());
+        assert (view.includeEmail.get().isSelected());
         view.includeEmail.set("False");
         assertFalse(view.includeEmail.get().isSelected());
     }
 
     @Test
-    public void testPagePopulateRadio(){
+    public void testPagePopulateRadio() {
         view.gender.set("Male");
-        assert(view.gender.get("Male").isSelected());
+        assert (view.gender.get("Male").isSelected());
         view.gender.set("Guy");
-        assert(view.gender.get("Guy").isSelected());
+        assert (view.gender.get("Guy").isSelected());
         view.gender.set("Female");
-        assert(view.gender.get("Female").isSelected());
+        assert (view.gender.get("Female").isSelected());
         view.gender.set("Girl");
-        assert(view.gender.get("Girl").isSelected());
+        assert (view.gender.get("Girl").isSelected());
     }
 }

@@ -6,8 +6,8 @@ public class PageDefinition {
 
     private static WebDriver browser;
 
-    public static WebDriver browser(){
-        if( browser == null)
+    public static WebDriver browser() {
+        if (browser == null)
             browser = Session.getInstance().openbrowser();
         return browser;
     }
