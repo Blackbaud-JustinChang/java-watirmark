@@ -19,7 +19,7 @@ public class Session {
     }
 
     public WebDriver openbrowser() {
-        if (browser == null)
+        if (browser == null || browser.toString().contains("null"))
             browser = newWatirBrowser();
         return browser;
     }
@@ -29,5 +29,6 @@ public class Session {
         browser = new FirefoxDriver();
         return browser;
     }
+
 
 }
