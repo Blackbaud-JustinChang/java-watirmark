@@ -41,9 +41,9 @@ public abstract class Controller {
         while (keys.hasNext()) {
             String key = keys.next();
             if (model.get(key) != null) {
-                //Before Keyword
+                beforeKeyword(key);
                 populateKeyword(key);
-                //After Keyword
+                afterKeyword(key);
                 seen = true;
             }
         }
@@ -72,6 +72,16 @@ public abstract class Controller {
         }
     }
 
+    private void beforeKeyword(String key) {
+        String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
+        callMethodIfExists("before"+ capKey);
+    }
+
+    private void afterKeyword(String key){
+        String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
+        callMethodIfExists("after"+ capKey);
+    }
+
     private boolean callMethodIfExists(String method){
         boolean exists = true;
         try {
@@ -84,8 +94,4 @@ public abstract class Controller {
         }
         return exists;
     }
-
-
-
-
 }
