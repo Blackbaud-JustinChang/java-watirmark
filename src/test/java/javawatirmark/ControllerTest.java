@@ -53,4 +53,15 @@ public class ControllerTest {
     public void testControllerVerification() {
         controller.verify();
     }
+
+    @Test
+    public void testOverwritePopulateMethod(){
+        HashMap newModel = new HashMap();
+        newModel.put("newPage", "POPULATED NEWPAGE");
+        PageController newController = new PageController(newModel);
+        newController.create();
+        assertEquals(view.newPage.text(), "POPULATED NEWPAGE");
+    }
+
+
 }

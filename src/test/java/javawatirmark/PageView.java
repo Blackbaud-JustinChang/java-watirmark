@@ -19,12 +19,18 @@ public class PageView extends Page {
     public static RadioKeyword gender = new RadioKeyword(By.name("sex"),
             new RadioMap(new Pair<>("Male|Guy", "0"),
                     new Pair<>("Female|Girl", "1")));
+    public static Keyword newPage = new Keyword(Type.H1, By.id("test"));
 
     public PageView() {
         createKeywords();
     }
 
     public void home(HashMap model) {
+        File file = new File("src/test/resources/page_test.html");
+        browser().get("file://"+file.getAbsolutePath());
+    }
+
+    public void populatedHome(HashMap model){
         File file = new File("src/test/resources/page_test_populated.html");
         browser().get("file://"+file.getAbsolutePath());
     }
@@ -34,7 +40,7 @@ public class PageView extends Page {
     }
 
     public void verify(HashMap model) {
-        home(model);
+        populatedHome(model);
     }
 
 
