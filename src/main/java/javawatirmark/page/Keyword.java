@@ -27,6 +27,10 @@ public class Keyword {
         return Session.getInstance().browser.findElement(map);
     }
 
+    public String text(){
+        return type.getValue(get());
+    }
+
     public void verify(String value) {
         assert (type.getValue(get()).toLowerCase().equals(value.toLowerCase()));
     }
