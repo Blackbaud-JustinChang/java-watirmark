@@ -44,6 +44,16 @@ public enum Type {
         public String getValue(WebElement element) {
             return new Boolean(element.isSelected()).toString();
         }
+    },
+    H1 {
+        // Cannot handle an H1 type
+        public void handleElement(WebElement element, String value) {
+        }
+
+        public String getValue(WebElement element) {
+            return element.getText();
+        }
+
     };
 
     public abstract void handleElement(WebElement element, String value);
