@@ -47,6 +47,7 @@ public class PageTest {
         keysTestSet.add("firstname");
         keysTestSet.add("companySelect");
         keysTestSet.add("includeEmail");
+        keysTestSet.add("newPage");
         keysTestSet.add("gender");
         assertEquals(keys, keysTestSet);
     }
@@ -61,6 +62,7 @@ public class PageTest {
         keysTestSet.add("includeEmail");
         keysTestSet.add("lastname");
         keysTestSet.add("gender");
+        keysTestSet.add("newPage");
         assertEquals(keys, keysTestSet);
     }
 
