@@ -11,43 +11,27 @@ import java.util.HashMap;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Model {
-    public class DefaultValue {
-        String value;
-
-        public DefaultValue(String _str) {
-            value = _str;
-        }
-
-        public String get() {
-            return value;
-        }
-    }
-
-    public HashMap<String, DefaultValue> map;
+    public HashMap<String, Defaults> map;
 
     public Model() {
-        map = new HashMap<String, DefaultValue>();
+        map = new HashMap<String, Defaults>();
     }
 
-    public Model(HashMap<String, DefaultValue> _map) {
+    public Model(HashMap<String, Defaults> _map) {
         map = _map;
     }
 
-    public String getValue(String str) {
-        return map.get(str).get();
-    }
-
-    public HashMap<String, DefaultValue> getDefaultValues() {
-        return map;
+    public Object getValue(String key) {
+        return map.get(key).value();
     }
 
     public void createDefaultValues() {
         for (Field f : this.getClass().getFields()) {
             try {
                 Object obj = f.get(this);
-                if (obj instanceof DefaultValue) {
+                if (obj instanceof Defaults) {
                     String name = f.getName();
-                    map.put(name, (DefaultValue) obj);
+                    map.put(name, (Defaults) obj);
                 }
             } catch (Exception e) {
                 System.out.println("BAD");
