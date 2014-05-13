@@ -1,13 +1,14 @@
 package javawatirmark;
 
-import javawatirmark.model.DefaultStringValue;
+import javawatirmark.model.DefaultValue;
 import javawatirmark.model.Model;
 
 public class PageModel extends Model {
 
-    public DefaultStringValue firstname = new DefaultStringValue("Justin");
-    public DefaultStringValue companySelect = new DefaultStringValue("National");
-    public DefaultStringValue gender = new DefaultStringValue("Female");
+    public DefaultValue firstname = new DefaultValue("Justin");
+    public DefaultValue companySelect = new DefaultValue("National");
+    public DefaultValue gender = new DefaultValue("Female");
+    public DefaultValue includeEmail = new DefaultValue("True");
 
     public PageModel() {
         super();

@@ -1,6 +1,9 @@
 package javawatirmark.page;
 
+import javawatirmark.model.Model;
+
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Page extends PageDefinition {
@@ -31,9 +34,9 @@ public abstract class Page extends PageDefinition {
         }
     }
 
-    public abstract void home(HashMap model);
+    public abstract void home(Model model);
 
-    public void create(HashMap model) {}
+    public void create(Model model) {}
 
-    public void verify(HashMap model) {}
+    public void verify(Model model) {}
 }

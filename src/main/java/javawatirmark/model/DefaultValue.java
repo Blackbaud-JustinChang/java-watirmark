@@ -1,25 +1,26 @@
 package javawatirmark.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: kyle.martinez
- * Date: 5/12/14
- * Time: 12:54 PM
+ * Date: 1/22/14
+ * Time: 4:17 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DefaultIntegerValue implements Defaults {
+public class DefaultValue implements Defaults {
+    public String value;
 
-    public Integer value;
-
-    public DefaultIntegerValue(Integer val)
+    public DefaultValue(String val)
     {
         value = val;
     }
 
-    public Integer value()
+    public String value()
     {
         return value;
     }
-
-
 }
+

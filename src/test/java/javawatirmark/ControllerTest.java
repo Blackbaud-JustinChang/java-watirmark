@@ -1,14 +1,12 @@
 package javawatirmark;
 
-import javawatirmark.page.Page;
-import org.junit.AfterClass;
+import javawatirmark.model.DefaultValue;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnit4.class)
@@ -16,22 +14,17 @@ public class ControllerTest {
 
     private PageController controller;
     private static PageView view;
-    private HashMap model;
+    private PageModel model;
 
     @Before
     public void setUp() {
-        model = new HashMap();
-        model.put("firstname", "Bobby");
-        model.put("companySelect", "Regional");
-        model.put("includeEmail", "True");
-        model.put("gender", "Male");
+        model = new PageModel();
         controller = new PageController(model);
         view = new PageView();
-
     }
 
-    @AfterClass
-    public static void tearDown(){
+    @After
+    public void tearDown(){
         view.browser().quit();
     }
 
@@ -43,25 +36,24 @@ public class ControllerTest {
     @Test
     public void testControllerPopulation(){
         controller.create();
-        assertEquals(view.firstname.get().getAttribute("value"), "Bobby");
-        assertEquals(new Select(view.companySelect.get()).getFirstSelectedOption().getText(), "Regional");
+        assertEquals(view.firstname.get().getAttribute("value"), "Justin");
+        assertEquals(new Select(view.companySelect.get()).getFirstSelectedOption().getText(), "National");
         assert(view.includeEmail.get().isSelected());
-        assert(view.gender.get("Male").isSelected());
+        assert(view.gender.get("Female").isSelected());
     }
 
     @Test
     public void testControllerVerification() {
+        controller.create();
         controller.verify();
     }
 
     @Test
     public void testOverwritePopulateMethod(){
-        HashMap newModel = new HashMap();
-        newModel.put("newPage", "POPULATED NEWPAGE");
-        PageController newController = new PageController(newModel);
+        model.setValue("newPage", new DefaultValue("POPULATED NEWPAGE"));
+        PageController newController = new PageController(model);
         newController.create();
         assertEquals(view.newPage.text(), "POPULATED NEWPAGE");
     }
-
 
 }

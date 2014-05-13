@@ -22,7 +22,20 @@ public abstract class Model {
     }
 
     public Object getValue(String key) {
-        return map.get(key).value();
+        if (map.get(key) == null)
+        {
+            return null;
+        }
+        else
+        {
+            return map.get(key).value();
+        }
+
+    }
+
+    public void setValue(String key, Defaults value)
+    {
+        map.put(key, value);
     }
 
     public void createDefaultValues() {

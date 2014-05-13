@@ -1,15 +1,17 @@
 package javawatirmark.controller;
 
+import javawatirmark.model.Model;
 import javawatirmark.page.Keyword;
 import javawatirmark.page.Page;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public abstract class Controller {
 
     protected Page view;
-    protected HashMap model;
+    protected Model model;
 
     public void run() {
 
@@ -37,10 +39,10 @@ public abstract class Controller {
 
     public boolean populateValues() {
         boolean seen = false;
-        Iterator<String> keys = view.getKeywords().keySet().iterator();
-        while (keys.hasNext()) {
-            String key = keys.next();
-            if (model.get(key) != null) {
+        for(Field field : view.getClass().getFields())
+        {
+            String key = field.getName();
+            if (model.getValue(key) != null) {
                 beforeKeyword(key);
                 populateKeyword(key);
                 afterKeyword(key);
@@ -56,9 +58,9 @@ public abstract class Controller {
 
         while (keys.hasNext()) {
             String key = keys.next();
-            if (model.get(key) != null) {
+            if (model.getValue(key) != null) {
                 Keyword keyword = keywords.get(key);
-                keyword.verify((String) model.get(key));
+                keyword.verify((String) model.getValue(key));
             }
         }
     }
@@ -68,7 +70,10 @@ public abstract class Controller {
         String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
         if(callMethodIfExists("populate"+ capKey)) {
         } else {
-            keyword.set((String) model.get(key));
+            if (model.getValue(key) instanceof String)
+            {
+                keyword.set((String) model.getValue(key));
+            }
         }
     }
 
