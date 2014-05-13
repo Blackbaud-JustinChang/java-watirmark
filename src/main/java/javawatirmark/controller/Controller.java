@@ -87,8 +87,7 @@ public abstract class Controller {
 
     private void populateKeyword(String key) {
         Keyword keyword = keywords().get(key);
-        String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
-        if(callMethodIfExists("populate"+ capKey)) {
+        if(callMethodIfExists("populate"+ camolizeKey(key))) {
         } else {
             if (model.getValue(key) instanceof String)
             {
@@ -98,13 +97,12 @@ public abstract class Controller {
     }
 
     private void beforeKeyword(String key) {
-        String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
-        callMethodIfExists("before"+ capKey);
+        callMethodIfExists("before"+ camolizeKey(key));
     }
 
     private void afterKeyword(String key){
-        String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
-        callMethodIfExists("after"+ capKey);
+
+        callMethodIfExists("after"+ camolizeKey(key));
     }
 
     private boolean callMethodIfExists(String method){
@@ -123,6 +121,11 @@ public abstract class Controller {
     private HashMap<String, Keyword> keywords()
     {
         return view.keywords;
+    }
+
+    private String camolizeKey(String key)
+    {
+        return key.substring(0,1).toUpperCase() + key.substring(1);
     }
 
 }
