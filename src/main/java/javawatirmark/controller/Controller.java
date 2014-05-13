@@ -7,7 +7,6 @@ import javawatirmark.page.Permission;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public abstract class Controller {
 
@@ -33,9 +32,7 @@ public abstract class Controller {
     }
 
     public void populateData() {
-        if (populateValues()){
-            //Submit Process Page
-        }
+        populateValues();
     }
 
     public boolean populateValues() {
