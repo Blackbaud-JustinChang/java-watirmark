@@ -8,14 +8,20 @@ public class Keyword {
 
     public By map;
     public Type type;
+    public Permission permission;
 
-
-    public Keyword() {
-    }
+    public Keyword(){}
 
     public Keyword(Type _type, By _map) {
         map = _map;
         type = _type;
+        permission = Permission.POPULATE;
+    }
+
+    public Keyword(Type _type, By _map, Permission _permission) {
+        map = _map;
+        type = _type;
+        permission = _permission;
     }
 
     public void set(String value) {

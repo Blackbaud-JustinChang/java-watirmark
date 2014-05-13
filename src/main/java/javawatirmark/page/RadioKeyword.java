@@ -13,6 +13,7 @@ public class RadioKeyword extends Keyword {
     public RadioKeyword(By _map, RadioMap _rmap) {
         map = _map;
         rmap = _rmap;
+        permission = Permission.POPULATE;
     }
 
     public void set(String value) {

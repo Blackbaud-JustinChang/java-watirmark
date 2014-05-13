@@ -3,6 +3,7 @@ package javawatirmark.controller;
 import javawatirmark.model.Model;
 import javawatirmark.page.Keyword;
 import javawatirmark.page.Page;
+import javawatirmark.page.Permission;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -43,30 +44,49 @@ public abstract class Controller {
         {
             String key = field.getName();
             if (model.getValue(key) != null) {
-                beforeKeyword(key);
-                populateKeyword(key);
-                afterKeyword(key);
-                seen = true;
+                if (populateAllowed(key))
+                {
+                    beforeKeyword(key);
+                    populateKeyword(key);
+                    afterKeyword(key);
+                    seen = true;
+                }
+
             }
         }
         return seen;
     }
 
-    public void verifyData() {
-        HashMap<String, Keyword> keywords = view.getKeywords();
-        Iterator<String> keys = keywords.keySet().iterator();
-
-        while (keys.hasNext()) {
-            String key = keys.next();
-            if (model.getValue(key) != null) {
-                Keyword keyword = keywords.get(key);
-                keyword.verify((String) model.getValue(key));
+    public void verifyData()
+    {
+        for(Field field : view.getClass().getFields())
+        {
+            String key = field.getName();
+            if (model.getValue(key) != null)
+            {
+                if (verifyAllowed(key))
+                {
+                    Keyword keyword = keywords().get(key);
+                    keyword.verify((String) model.getValue(key));
+                }
             }
         }
     }
 
+    private boolean populateAllowed(String key)
+    {
+        return ( keywords().get(key).permission == Permission.POPULATE );
+    }
+
+    private boolean verifyAllowed(String key)
+    {
+
+        return ( keywords().get(key).permission == Permission.POPULATE || keywords().get(key).permission == Permission.VERIFY );
+    }
+
+
     private void populateKeyword(String key) {
-        Keyword keyword = view.getKeywords().get(key);
+        Keyword keyword = keywords().get(key);
         String capKey = key.substring(0,1).toUpperCase() + key.substring(1);
         if(callMethodIfExists("populate"+ capKey)) {
         } else {
@@ -99,4 +119,10 @@ public abstract class Controller {
         }
         return exists;
     }
+
+    private HashMap<String, Keyword> keywords()
+    {
+        return view.keywords;
+    }
+
 }
